@@ -191,7 +191,7 @@ void Profile::unsetPlugin()
 Profile Profile::fromUri(const std::string& ssUri)
 {
     if (ssUri.length() < 5) {
-        std::cout << "1" << std::endl;
+        std::cerr << "xxxxxxxxxxxxxxxxxxxx1" << std::endl;
         throw std::invalid_argument("SS URI is too short");
     }
 
@@ -215,7 +215,7 @@ Profile Profile::fromUri(const std::string& ssUri)
         std::string decoded(QByteArray::fromBase64(QByteArray(uri.data(), uri.length()), QByteArray::Base64Option::OmitTrailingEquals).data());
         size_t colonPos = decoded.find_first_of(':');
         if (colonPos == std::string::npos) {
-            std::cout << "2" << std::endl;
+            std::cerr << "xxxxxxxxxxxxxxxxxxxxxxxx2" << std::endl;
             throw std::invalid_argument("Can't find the colon separator between method and password");
         }
         std::string method = decoded.substr(0, colonPos);
@@ -223,14 +223,14 @@ Profile Profile::fromUri(const std::string& ssUri)
         decoded.erase(0, colonPos + 1);
         atPos = decoded.find_last_of('@');
         if (atPos == std::string::npos) {
-            std::cout << "3" << std::endl;
+            std::cerr << "xxxxxxxxxxxxxxxxxxxxxxxxx3" << std::endl;
             throw std::invalid_argument("Can't find the at separator between password and hostname");
         }
         result.setPassword(decoded.substr(0, atPos));
         decoded.erase(0, atPos + 1);
         colonPos = decoded.find_last_of(':');
         if (colonPos == std::string::npos) {
-            std::cout << "4" << std::endl;
+            std::cerr << "xxxxxxxxxxxxxxxxxxxxxxxxx4" << std::endl;
             throw std::invalid_argument("Can't find the colon separator between hostname and port");
         }
         result.setServerAddress(decoded.substr(0, colonPos));
@@ -240,7 +240,7 @@ Profile Profile::fromUri(const std::string& ssUri)
         std::string userInfo(QByteArray::fromBase64(QByteArray(uri.data(), atPos), QByteArray::Base64Option::Base64UrlEncoding).data());
         size_t userInfoSp = userInfo.find_first_of(':');
         if (userInfoSp == std::string::npos) {
-            std::cout << "5" << std::endl;
+            std::cerr << "xxxxxxxxxxxxxxxxxxxxxxxxxx5" << std::endl;
             throw std::invalid_argument("Can't find the colon separator between method and password");
         }
         std::string method = userInfo.substr(0, userInfoSp);
@@ -250,7 +250,7 @@ Profile Profile::fromUri(const std::string& ssUri)
         uri.erase(0, atPos + 1);
         size_t hostSpPos = uri.find_last_of(':');
         if (hostSpPos == std::string::npos) {
-            std::cout << "6" << std::endl;
+            std::cerr << "xxxxxxxxxxxxxxxxxxxxxxxx6" << std::endl;
             throw std::invalid_argument("Can't find the colon separator between hostname and port");
         }
         result.setServerAddress(uri.substr(0, hostSpPos));
