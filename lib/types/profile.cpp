@@ -1,6 +1,7 @@
 #include "profile.h"
 #include <QByteArray>
 #include <stdexcept>
+#include <iostream>
 
 namespace QSS {
 
