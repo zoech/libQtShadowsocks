@@ -198,7 +198,7 @@ Profile Profile::fromUri(const std::string& ssUri)
     Profile result;
     //remove the prefix "ss://" from uri
     std::string uri(ssUri.data() + 5, ssUri.length() - 5);
-    std:cout<< uri << std::endl;
+    std::cout<< uri << std::endl;
     size_t hashPos = uri.find_last_of('#');
     if (hashPos != std::string::npos) {
         // Get the name/remark
