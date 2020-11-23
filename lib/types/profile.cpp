@@ -198,6 +198,7 @@ Profile Profile::fromUri(const std::string& ssUri)
     Profile result;
     //remove the prefix "ss://" from uri
     std::string uri(ssUri.data() + 5, ssUri.length() - 5);
+    std:cout<< uri << std::endl;
     size_t hashPos = uri.find_last_of('#');
     if (hashPos != std::string::npos) {
         // Get the name/remark
@@ -213,6 +214,7 @@ Profile Profile::fromUri(const std::string& ssUri)
     if (atPos == std::string::npos) {
         // Old URI scheme
         std::string decoded(QByteArray::fromBase64(QByteArray(uri.data(), uri.length()), QByteArray::Base64Option::OmitTrailingEquals).data());
+        std::cout << decoded << std::endl;
         size_t colonPos = decoded.find_first_of(':');
         if (colonPos == std::string::npos) {
             std::cerr << "xxxxxxxxxxxxxxxxxxxxxxxx2" << std::endl;
